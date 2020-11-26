@@ -1,0 +1,61 @@
+This project is my solution to a puzzle I heard about on YouTube, implemented as a shell pipeline. 
+
+
+Problem 
+-------
+
+A warden sets up a 8x8 chess board with coins heads or tails up how ever he likes.  He hides a key under one of the squares.
+
+2 prisoners can collaborate ahead of time, but the warden can listen to their strategy before he sets up the board.
+
+The first prisoner sees where the key is and may flip one coin of his choice to communicate the location to the second prisoner.
+
+The second prisoner must then figure out where the key is.
+
+
+
+As described by Grant Sanderson (3blue1brown) to Matt Parker (standupmaths):
+
+Prisoner 1 walks in, sees a chessboard where each square has a coin on top, flipped either to heads or tails.  The warden places the key under one of the squares, which prisoner 1 sees.  Before he leaves, he must turn over one and only one coin.  Prisoner 2 then walks in and is supposed to be able to figure out which squares the key is in just by looking at the arrangement of coins.
+
+This is the website Matt mentioned with a full breakdown of the solution and interactive boards you can play with.
+http://datagenetics.com/blog/december...
+
+
+
+My solution
+-----------
+
+ - warden.sh     - Generates a chessboard 
+                   with one coin on each sqaure, 
+                   randomly heads up or down, 
+                   and picks a location for the key.
+
+ - prisoner1.py  - Reads the board and flips one coin.
+                   Accepts the option flag "-x" to eXplain 
+                   how it is choosing which coin to flip.
+
+ - prisoner2.py  - Reads the board.
+                   Accepts the option flag "-x" to eXplain 
+                   how it is reading the board.
+
+
+
+Run
+---
+
+  $ ./warden.sh | ./prisoner1.py | ./prisoner2.py  
+
+
+To better understand how the prisoners read the board:
+
+  $ ./warden.sh | ./prisoner1.py | ./prisoner2.py -x
+ 
+To better understand how prisoner1 chooses which coin to flip:
+
+  $ ./warden.sh | ./prisoner1.py -x | ./prisoner2.py 
+ 
+
+
+
+
